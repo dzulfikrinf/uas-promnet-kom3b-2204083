@@ -32,9 +32,6 @@ func Routers() *mux.Router {
 	return router
 }
 
-/***************************************************/
-
-// Get all users
 func GetPeminjamanBuku(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	var peminjams []PeminjamanBuku
@@ -56,7 +53,6 @@ func GetPeminjamanBuku(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(peminjams)
 }
 
-// Create user
 func CreatePeminjamanBuku(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
@@ -98,7 +94,6 @@ func CreatePeminjamanBuku(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "New user was created")
 }
 
-// Get user by ID
 func GetPeminjamanBukuByID(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	params := mux.Vars(r)
@@ -120,7 +115,6 @@ func GetPeminjamanBukuByID(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(peminjam)
 }
 
-// Update user
 func UpdatePeminjamanBuku(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	params := mux.Vars(r)
@@ -160,7 +154,6 @@ func UpdatePeminjamanBuku(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Data peminjaman dengan ID = %s telah diupdate", params["id"])
 }
 
-// Delete User
 func DeletePeminjamanBuku(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
@@ -181,8 +174,6 @@ func DeletePeminjamanBuku(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Peminjaman buku dengan ID = %s berhasil dihapus", params["id"])
 }
 
-/***************************************************/
-
 type PeminjamanBuku struct {
 	ID                  string `json:"id"`
 	JudulBuku           string `json:"judul_buku"`
@@ -195,7 +186,6 @@ type PeminjamanBuku struct {
 	LamaPinjam          string `json:"lama_pinjam"`
 }
 
-// Db configuration
 var db *sql.DB
 var err error
 
@@ -206,9 +196,6 @@ func InitDB() {
 	}
 }
 
-/***************************************************/
-
-// CORSRouterDecorator applies CORS headers to a mux.Router
 type CORSRouterDecorator struct {
 	R *mux.Router
 }
