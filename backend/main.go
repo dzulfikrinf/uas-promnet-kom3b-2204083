@@ -91,7 +91,7 @@ func CreatePeminjamanBuku(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	fmt.Fprintf(w, "New user was created")
+	fmt.Fprintf(w, "Data peminjaman Buku berhasil ditambahkan!")
 }
 
 func GetPeminjamanBukuByID(w http.ResponseWriter, r *http.Request) {
